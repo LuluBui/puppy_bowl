@@ -10,7 +10,8 @@ ul{
     padding: 0; 
     margin: 0; 
 }
-li{
+
+.dogcard{
     border: solid hotpink 3px;
     background-color: white;
     width: 18vw;
@@ -46,13 +47,16 @@ h4{
 img{
     width:calc(100% - 4rem);
 }
+li:empty {
+    position: absolute;
+}
 @media (max-width: 600px) {
     ul{
         flex-direction: column;
         align-items: center;
     }
 
-    li{
+    .dogcard{
         width: 80vw;
     }
     .box{

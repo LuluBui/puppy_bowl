@@ -4,6 +4,7 @@ let teamData;
 const list = document.querySelector('ul');
 const itemDisplay = document.querySelector('div');
 let current;
+let id;
 main();
 
 async function main(){
@@ -42,13 +43,32 @@ function selectPlayer(){
 
 function getEventFromHash(){
     //get the id from the hash
-    const id = window.location.hash.slice(1);
+    
+    if(current !== undefined){
+        rerenderItemFromList(document.getElementById(`c${id}`));
+    }
+
+    id = window.location.hash.slice(1);
 
     const item = puppyData.find((i) => {
         return i.id === (id*1);
     })
 
     current = item;
+    
+    unrenderItemFromList(document.getElementById(`c${id}`));
+}
+
+function rerenderItemFromList(element){
+    element.innerHTML = `
+    <div class="dogcard">
+    <h3><a href=#${current.id}> ${current.name} </a></h3>
+    <h4>${current.breed}</h4>
+    </div>
+    `;
+}
+function unrenderItemFromList(element){
+    element.innerHTML = "";
 }
 
 function renderPlayerInfo(){
@@ -75,8 +95,10 @@ function renderList(){
 
         return `
         <li id="c${i.id}">
+        <div class="dogcard">
         <h3><a href=#${i.id}> ${i.name} </a></h3>
         <h4>${i.breed}</h4>
+        <div>
         </li>
         `;
     })
