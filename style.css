@@ -1,5 +1,8 @@
+html{
+    height:100%;
+    background: linear-gradient(rgb(255, 255, 124), rgb(165, 255, 161)) fixed no-repeat;
+}
 body{
-    background-color: rgb(255, 255, 124);
     text-align: center;
 }
 ul{
@@ -48,6 +51,7 @@ img{
     width:calc(100% - 4rem);
 }
 li:empty {
+    /* absolute to take the item out of flexbox */
     position: absolute;
 }
 @media (max-width: 600px) {
